@@ -4,6 +4,9 @@ import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
 import CardMedia from '@material-ui/core/CardMedia';
+import List from '@material-ui/core/List';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 const useStyles = makeStyles({
   root: {
@@ -32,6 +35,9 @@ function App() {
         title=""
       />
       <CardContent>
+      <List component="nav" aria-label="main mailbox folders">
+        <ListItemText primary="Spam" />
+      </List>
         <Typography variant="body2" component="p" className={classes.pb20}>Photo by John Doe</Typography>
         <Typography variant="body2" color="textSecondary" component="p">Views: 4000</Typography>
         <Typography variant="body2" color="textSecondary" component="p">Downloads: 300</Typography>
