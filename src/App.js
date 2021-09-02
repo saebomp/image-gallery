@@ -22,6 +22,9 @@ const useStyles = makeStyles({
   },
   pb20: {
     paddingBottom:20,
+  },
+  list: {
+    color:'#666',
   }
 });
 
@@ -38,13 +41,12 @@ function App() {
             title=""
           />
           <CardContent>
-          <List component="nav" aria-label="main mailbox folders">
-            <ListItemText primary="Spam" />
-          </List>
-            <Typography variant="body2" component="p" className={classes.pb20}>Photo by John Doe</Typography>
-            <Typography variant="body2" color="textSecondary" component="p">Views: 4000</Typography>
-            <Typography variant="body2" color="textSecondary" component="p">Downloads: 300</Typography>
-            <Typography variant="body2" color="textSecondary" component="p">Likes: 4000</Typography>
+            <Typography variant="body1" component="p" className={classes.pb20}>Photo by John Doe</Typography>
+            <List aria-label="main mailbox folders" className={classes.list}>
+              <ListItemText primary="Views: 4000" />
+              <ListItemText primary="Downloads: 300" />
+              <ListItemText primary="Likes: 4000" />
+            </List>
           </CardContent>
         </Card>
       </Grid>
