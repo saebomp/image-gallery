@@ -8,6 +8,7 @@ import List from '@material-ui/core/List';
 import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
+import Chip from '@material-ui/core/Chip';
 
 const useStyles = makeStyles({
   root: {
@@ -25,6 +26,9 @@ const useStyles = makeStyles({
   },
   list: {
     color:'#666',
+  },
+  chip: {
+    marginRight:'10px'
   }
 });
 
@@ -47,6 +51,11 @@ function App() {
               <ListItemText primary="Downloads: 300" />
               <ListItemText primary="Likes: 4000" />
             </List>
+            <div>
+              <Chip label="#Tag1" className={classes.chip} />
+              <Chip label="#Tag2" className={classes.chip} />
+              <Chip label="#Tag3" className={classes.chip} />
+            </div>
           </CardContent>
         </Card>
       </Grid>
