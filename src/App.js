@@ -1,3 +1,4 @@
+import React, {useState, useEffect} from 'react';
 import './App.css';
 import { makeStyles } from '@material-ui/core/styles';
 import Card from '@material-ui/core/Card';
@@ -9,6 +10,7 @@ import ListItem from '@material-ui/core/ListItem';
 import ListItemText from '@material-ui/core/ListItemText';
 import Grid from '@material-ui/core/Grid';
 import Chip from '@material-ui/core/Chip';
+
 
 const useStyles = makeStyles({
   root: {
@@ -34,6 +36,9 @@ const useStyles = makeStyles({
 
 function App() {
   const classes = useStyles();
+  const [images, setImages]  = useState([]);
+  const [isLoading, setIsLoading] = useState(true);
+  const [term, setTerm] = useState('');
 
   return (
     <Grid container spacing={3}>
