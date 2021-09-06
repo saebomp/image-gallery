@@ -26,32 +26,34 @@ const useStyles = makeStyles({
       color:'#666',
     },
     chip: {
-      marginRight:'10px'
+      marginRight:'10px',
+      marginBottom:'5px'
     }
   });
   
-const ImageCard = () => {
+const ImageCard = ({image}) => {
   const classes = useStyles();
+  const tags = image.tags.split(',');
 
     return (
         <div>
             <Card className={classes.root}>
                 <CardMedia
                     className={classes.media}
-                    image="https://source.unsplash.com/random"
+                    image={image.webformatURL}
                     title=""
                 />
                 <CardContent>
-                    <Typography variant="body1" component="p" className={classes.pb20}>Photo by John Doe</Typography>
+                    <Typography variant="body1" component="p" className={classes.pb20}>Photo by {image.user}</Typography>
                     <List aria-label="main mailbox folders" className={classes.list}>
-                        <ListItemText primary="Views: 4000" />
-                        <ListItemText primary="Downloads: 300" />
-                        <ListItemText primary="Likes: 4000" />
+                        <ListItemText primary={`Views : ${image.views}`} />
+                        <ListItemText primary={`Downloads : ${image.downloads}`} />
+                        <ListItemText primary={`Likes : ${image.likes}`} />
                     </List>
                     <div>
-                        <Chip label="#Tag1" className={classes.chip} />
-                        <Chip label="#Tag2" className={classes.chip} />
-                        <Chip label="#Tag3" className={classes.chip} />
+                      {tags.map(tag => (
+                        <Chip key={image.id} label={tag} className={classes.chip} />
+                      ))}
                     </div>
                 </CardContent>
             </Card>
