@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import './App.css';
 import ImageCard from './components/ImageCard'
+import ImageSearch from './components/ImageSearch'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
 import { makeStyles } from '@material-ui/core/styles';
@@ -33,6 +34,7 @@ function App() {
 
   return (
     <div>
+    <ImageSearch />
     {isLoading ? 
       <div className={classes.root}>
         <CircularProgress />
@@ -52,4 +54,4 @@ function App() {
 export default App;
 
 
-// https://www.youtube.com/watch?v=FiGmAI5e91M&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb   28:25
+// https://www.youtube.com/watch?v=FiGmAI5e91M&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb   31:01
