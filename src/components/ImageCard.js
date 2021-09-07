@@ -52,7 +52,7 @@ const ImageCard = ({image}) => {
                     </List>
                     <div>
                       {tags.map((tag, index) => (
-                        <Chip key={index} label={tag} className={classes.chip} />
+                        <Chip key={index} label={`# ${tag}`} className={classes.chip} />
                       ))}
                     </div>
                 </CardContent>

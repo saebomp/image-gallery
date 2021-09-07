@@ -13,6 +13,9 @@ const useStyles = makeStyles((theme) => ({
     top:'45%',
     width:'100%'
   },
+  container: {
+    padding:'0 20px'
+  }
 }));
 
 function App() {
@@ -33,20 +36,21 @@ function App() {
   }, []);
 
   return (
-    <div>
-    <ImageSearch />
-    {isLoading ? 
-      <div className={classes.root}>
-        <CircularProgress />
-      </div>
-      :  
-      <Grid container spacing={3}>
-        {images.map(image => (
-          <Grid item xs={4}>
-            <ImageCard key={image.id} image={image} />
-          </Grid>
-        ))}
-      </Grid>}
+    <div className={classes.container}>
+      <ImageSearch />
+      {isLoading ? 
+        <div className={classes.root}>
+          <CircularProgress />
+        </div>
+        :  
+        <Grid container spacing={3}>
+          {images.map(image => (
+            <Grid item xs={4}>
+              <ImageCard key={image.id} image={image} />
+            </Grid>
+          ))}
+        </Grid>
+        }
     </div>
   );
 }
@@ -54,4 +58,4 @@ function App() {
 export default App;
 
 
-// https://www.youtube.com/watch?v=FiGmAI5e91M&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb   31:01
+// https://www.youtube.com/watch?v=FiGmAI5e91M&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb   32:54
