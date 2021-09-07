@@ -51,8 +51,8 @@ const ImageCard = ({image}) => {
                         <ListItemText primary={`Likes : ${image.likes}`} />
                     </List>
                     <div>
-                      {tags.map(tag => (
-                        <Chip key={image.id} label={tag} className={classes.chip} />
+                      {tags.map((tag, index) => (
+                        <Chip key={index} label={tag} className={classes.chip} />
                       ))}
                     </div>
                 </CardContent>
