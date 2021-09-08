@@ -33,11 +33,13 @@ function App() {
       console.log(data.hits)
     })
     .catch(err => console.log(err))
-  }, []);
+  }, [term]);
 
   return (
     <div className={classes.container}>
-      <ImageSearch />
+      <ImageSearch searchText={(text) =>{ 
+        console.log('text', text);
+        setTerm(text)}} />
       {isLoading ? 
         <div className={classes.root}>
           <CircularProgress />
