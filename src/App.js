@@ -4,7 +4,7 @@ import ImageCard from './components/ImageCard'
 import ImageSearch from './components/ImageSearch'
 import Grid from '@material-ui/core/Grid';
 import CircularProgress from '@material-ui/core/CircularProgress';
-import { makeStyles } from '@material-ui/core/styles';
+import { makeStyles,createTheme } from '@material-ui/core/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -15,8 +15,23 @@ const useStyles = makeStyles((theme) => ({
   },
   container: {
     padding:'0 20px'
+  },
+  alert: {
+    textAlign:'center',
+    marginTop:'30px'
   }
 }));
+
+const theme = createTheme({
+  breakpoints: {
+    values: {
+      xs: 0,
+      sm: 600,
+      md: 960,
+      lg: 1280,
+    },
+  },
+})
 
 function App() {
   const classes = useStyles();
@@ -39,7 +54,11 @@ function App() {
     <div className={classes.container}>
       <ImageSearch searchText={(text) =>{ 
         console.log('text', text);
-        setTerm(text)}} />
+        setTerm(text)}}
+      />
+      {!isLoading && images.length === 0 &&
+      <div className={classes.alert}>No Images Found</div>}
+
       {isLoading ? 
         <div className={classes.root}>
           <CircularProgress />
@@ -47,7 +66,7 @@ function App() {
         :  
         <Grid container spacing={3}>
           {images.map(image => (
-            <Grid item xs={4}>
+            <Grid item xs={12} sm={6} md={4} lg={3}>
               <ImageCard key={image.id} image={image} />
             </Grid>
           ))}
@@ -60,4 +79,8 @@ function App() {
 export default App;
 
 
-// https://www.youtube.com/watch?v=FiGmAI5e91M&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb   32:54
+// https://www.youtube.com/watch?v=FiGmAI5e91M&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb  
+// https://pixabay.com/api/docs/
+
+//1.이미지 작은화면에서 적게보일것
+// 2. api에서 추가할 내용 넣을것 (클릭했을때 큰 이미지 보이는것 등)
