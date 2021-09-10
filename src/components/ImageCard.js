@@ -28,6 +28,14 @@ const useStyles = makeStyles({
     chip: {
       marginRight:'10px',
       marginBottom:'5px'
+    },
+    zoom: {
+      display:'block',
+      cursor:'pointer'
+    },
+    username: {
+      color:'#ff5200',
+      fontWeight:'bold'
     }
   });
   
@@ -36,28 +44,31 @@ const ImageCard = ({image}) => {
   const tags = image.tags.split(',');
 
     return (
-        <div>
-            <Card className={classes.root}>
-                <CardMedia
-                    className={classes.media}
-                    image={image.webformatURL}
-                    title=""
-                />
-                <CardContent>
-                    <Typography variant="body1" component="p" className={classes.pb20}>Photo by {image.user}</Typography>
-                    <List aria-label="main mailbox folders" className={classes.list}>
-                        <ListItemText primary={`Views : ${image.views}`} />
-                        <ListItemText primary={`Downloads : ${image.downloads}`} />
-                        <ListItemText primary={`Likes : ${image.likes}`} />
-                    </List>
-                    <div>
-                      {tags.map((tag, index) => (
-                        <Chip key={index} label={`# ${tag}`} className={classes.chip} />
-                      ))}
-                    </div>
-                </CardContent>
-            </Card>
-        </div>
+      <div>
+        <Card className={classes.root}>
+          <a className={classes.zoom}>
+            <CardMedia
+              className={classes.media}
+              image={image.webformatURL}
+              title=""
+            />
+          </a>
+          <CardContent>
+              <Typography variant="body1" component="p" className={classes.pb20}>Photo by <span className={classes.username}>{image.user}</span></Typography>
+              <List aria-label="main mailbox folders" className={classes.list}>
+                <ListItemText primary={`Views : ${image.views}`} />
+                <ListItemText primary={`Downloads : ${image.downloads}`} />
+                <ListItemText primary={`Likes : ${image.likes}`} />
+                {/* <ListItemText primary={`${image.largeImageURL}`} /> */}
+              </List>
+              <div>
+                {tags.map((tag, index) => (
+                  <Chip key={index} label={`# ${tag}`} className={classes.chip} />
+                ))}
+              </div>
+          </CardContent>
+        </Card>
+      </div>
     )
 }
 

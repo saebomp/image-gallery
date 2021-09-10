@@ -33,6 +33,13 @@ const useStyles = makeStyles((theme) => ({
           width: '20ch',
         },
       },
+      btn: {
+        backgroundColor:'#242582',
+        color:"#fff",
+        '&:hover': {
+          backgroundColor: '#242582',
+        },
+      }
 }));
 
 const ImageSearch = ({searchText}) => {
@@ -45,23 +52,23 @@ const ImageSearch = ({searchText}) => {
     }
 
     return (
-        <div>
-            <div className={classes.search}>
-            <form onSubmit={onSubmit}>
-              <InputBase
-                onChange={e => setText(e.target.value)}
-                placeholder="Search…"
-                classes={{
-                    root: classes.inputRoot,
-                    input: classes.inputInput,
-                }}
-              />
-              <Button variant="contained" type="submit">
-                  Search
-              </Button>
-            </form>
-          </div>
+      <div>
+        <div className={classes.search}>
+          <form onSubmit={onSubmit}>
+            <InputBase
+              onChange={e => setText(e.target.value)}
+              placeholder="Search…"
+              classes={{
+                  root: classes.inputRoot,
+                  input: classes.inputInput,
+              }}
+            />
+            <Button variant="contained" type="submit" className={classes.btn}>
+                Search
+            </Button>
+          </form>
         </div>
+      </div>
     )
 }
 
