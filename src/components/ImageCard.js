@@ -6,9 +6,12 @@ import CardMedia from '@material-ui/core/CardMedia';
 import List from '@material-ui/core/List';
 import ListItemText from '@material-ui/core/ListItemText';
 import Chip from '@material-ui/core/Chip';
+import Modal from '@material-ui/core/Modal';
+import Fade from '@material-ui/core/Fade';
+import Backdrop from '@material-ui/core/Backdrop';
 import { makeStyles } from '@material-ui/core/styles';
 
-const useStyles = makeStyles({
+const useStyles = makeStyles((theme) => ({
     root: {
       minWidth: 275,
     },
@@ -36,23 +39,62 @@ const useStyles = makeStyles({
     username: {
       color:'#ff5200',
       fontWeight:'bold'
-    }
-  });
+    },
+    modal: {
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+    },
+    paper: {
+      backgroundColor: theme.palette.background.paper,
+      border: '2px solid #000',
+      boxShadow: theme.shadows[5],
+      padding: theme.spacing(2, 4, 3),
+      },
+  }));
   
 const ImageCard = ({image}) => {
   const classes = useStyles();
   const tags = image.tags.split(',');
+  const [open, setOpen] = React.useState(false);
+
+  const handleOpen = () => {
+    setOpen(true);
+  };
+
+  const handleClose = () => {
+    setOpen(false);
+  };
 
     return (
       <div>
         <Card className={classes.root}>
-          <a className={classes.zoom}>
+          <a className={classes.zoom} onClick={handleOpen}>
             <CardMedia
               className={classes.media}
               image={image.webformatURL}
               title=""
             />
           </a>
+          <Modal
+            aria-labelledby="transition-modal-title"
+            aria-describedby="transition-modal-description"
+            className={classes.modal}
+            open={open}
+            onClose={handleClose}
+            closeAfterTransition
+            BackdropComponent={Backdrop}
+            BackdropProps={{
+              timeout: 500,
+            }}
+          >
+            <Fade in={open}>
+              <div className={classes.paper}>
+                <h2 id="transition-modal-title">Transition modal</h2>
+                <p id="transition-modal-description">react-transition-group animates me.</p>
+              </div>
+            </Fade>
+          </Modal>
           <CardContent>
               <Typography variant="body1" component="p" className={classes.pb20}>Photo by <span className={classes.username}>{image.user}</span></Typography>
               <List aria-label="main mailbox folders" className={classes.list}>
