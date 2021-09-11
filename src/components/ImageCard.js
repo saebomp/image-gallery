@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Card from '@material-ui/core/Card';
 import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
@@ -56,7 +56,7 @@ const useStyles = makeStyles((theme) => ({
 const ImageCard = ({image}) => {
   const classes = useStyles();
   const tags = image.tags.split(',');
-  const [open, setOpen] = React.useState(false);
+  const [open, setOpen] = useState(false);
 
   const handleOpen = () => {
     setOpen(true);
@@ -68,6 +68,24 @@ const ImageCard = ({image}) => {
 
     return (
       <div>
+        <Modal
+          aria-labelledby="transition-modal-title"
+          aria-describedby="transition-modal-description"
+          className={classes.modal}
+          open={open}
+          onClose={handleClose}
+          closeAfterTransition
+          BackdropComponent={Backdrop}
+          BackdropProps={{
+            timeout: 500,
+          }}
+        >
+          <Fade in={open}>
+            <div className={classes.paper}>
+              <img src={image.largeImageURL} onClick={handleClose} />
+            </div>
+          </Fade>
+        </Modal>
         <Card className={classes.root}>
           <a className={classes.zoom} onClick={handleOpen}>
             <CardMedia
@@ -76,25 +94,7 @@ const ImageCard = ({image}) => {
               title=""
             />
           </a>
-          <Modal
-            aria-labelledby="transition-modal-title"
-            aria-describedby="transition-modal-description"
-            className={classes.modal}
-            open={open}
-            onClose={handleClose}
-            closeAfterTransition
-            BackdropComponent={Backdrop}
-            BackdropProps={{
-              timeout: 500,
-            }}
-          >
-            <Fade in={open}>
-              <div className={classes.paper}>
-                <h2 id="transition-modal-title">Transition modal</h2>
-                <p id="transition-modal-description">react-transition-group animates me.</p>
-              </div>
-            </Fade>
-          </Modal>
+          
           <CardContent>
               <Typography variant="body1" component="p" className={classes.pb20}>Photo by <span className={classes.username}>{image.user}</span></Typography>
               <List aria-label="main mailbox folders" className={classes.list}>

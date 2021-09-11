@@ -82,4 +82,3 @@ export default App;
 // https://www.youtube.com/watch?v=FiGmAI5e91M&list=PLillGF-RfqbY3c2r0htQyVbDJJoBFE6Rb  
 // https://pixabay.com/api/docs/
 
-// 2. api에서 추가할 내용 넣을것 (클릭했을때 큰 이미지 보이는것 등)
