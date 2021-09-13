@@ -6,7 +6,8 @@
 React / React Hooks / Material UI
 
 # Setup
-npm start
+npm start<br />
+https://saebomp.github.io/image-gallery
 
 # Status
 Project is in progress
